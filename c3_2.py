@@ -1,0 +1,48 @@
+#-*- coding:utf-8 –*-
+import pygame
+from pygame.locals import *
+from sys import exit
+
+background_image_filename = "sushiplate.jpg"
+SCREEN_SIZE=(640, 480)
+
+pygame.init()
+screen = pygame.display.set_mode(SCREEN_SIZE, pygame.RESIZABLE, 32)
+
+background = pygame.image.load(background_image_filename).convert()
+
+while True:
+    event = pygame.event.wait()
+    if event.type == pygame.QUIT:
+        exit()
+    if event.type == pygame.VIDEORESIZE:
+        SCREEN_SIZE = event.size
+        screen = pygame.display.set_mode(SCREEN_SIZE, pygame.RESIZABLE, 32)
+        pygame.display.set_caption("Window resized to " + str(event.size))
+
+    screen_width, screen_height = SCREEN_SIZE
+
+    for y in range(0, screen_height, background.get_height()):
+        for x in range(0, screen_width, background.get_width()):
+            screen.blit(background, (x,y))
+
+    '''
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            exit()
+        if event.type == pygame.VIDEORESIZE:
+            SCREEN_SIZE = event.size
+            screen = pygame.display.set_mode(SCREEN_SIZE, pygame.RESIZABLE, 32)
+            pygame.display.set_caption("Window resized to " + str(event.size))
+
+        screen_width, screen_height = SCREEN_SIZE
+    
+        pygame.display.update()
+
+    for y in range(0, screen_height, background.get_height()):
+        for x in range(0, screen_width, background.get_width()):
+            screen.blit(background, (x,y))
+    '''
+
+
+
