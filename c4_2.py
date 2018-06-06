@@ -6,8 +6,11 @@ from sys import exit
 pygame.init()
 # help(pygame)
 screen = pygame.display.set_mode((640, 480) ,0, 32)
-
+# 系统字体
+# my_font = pygame.font.SysFont("arial", 64)
+# ttf文件
 font = pygame.font.Font("Arial Unicode.ttf", 40)
+# font = pygame.font.SysFont("SimHei", 64)
 text_surface = font.render(u"你好", True, (0, 0, 255))
 
 x = 0
